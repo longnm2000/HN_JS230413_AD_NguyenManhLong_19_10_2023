@@ -3,27 +3,25 @@ import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 
 function QuestionComp() {
-    interface Setup{
-        quantity:number,
-        category:number,
-        level:string
-    }
-  const setup: Setup = JSON.parse(localStorage.getItem("setup")||"{}");
-console.log(setup);
+  interface Setup {
+    quantity: number,
+    category: number,
+    level: string
+  }
+  const setup: Setup = JSON.parse(localStorage.getItem("setup") || "{}");
+  console.log(setup);
 
-  const [data,setData] = useState<object[]>([])
+  const [data, setData] = useState<object[]>([])
   const [correctAnswers, setCorrectAnswers] = useState<number>(0);
-  const fetchData = async()=>{
+  const fetchData = async () => {
     const response = await axios.get(`http://localhost:3000/api/v1/questions?category=${setup.category}&level=${setup.level}&limit=${setup.quantity}`);
     setData(response.data);
   }
 
   console.log(data);
-  console.log(`http://localhost:3000/api/v1/questions?category=${setup.category}&level=${setup.level}&limit=${setup.quantity}`);
-  
-  useEffect(()=>{
+  useEffect(() => {
     fetchData()
-  },[])
+  }, [])
   return (
     <>
       <div className="bg-white p-4 rounded-2">

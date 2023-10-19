@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 import connection from "../utils/database.config"
 import { Request, Response } from "express";
-
+import { RowDataPacket } from 'mysql2';
 const router: Router = express.Router();
 
 router.get("/:id", async (req: Request, res: Response) => {
@@ -46,8 +46,14 @@ router.get("/", async (req: Request, res: Response) => {
             levelId = 2;
         }
 
-        const data = await connection.execute("SELECT * FROM Question WHERE category_id=? AND level=? LIMIT ?", [category, levelId, limit]);
-        res.json(data[0]);
+        const questions = await connection.execute("SELECT * FROM Question WHERE category_id=? AND level=? LIMIT ?", [category, levelId, limit]);
+        const questionIds: number[] = (questions[0] as RowDataPacket[]).map(e => e.question_id);
+        const questionIdsString = questionIds.join(",");
+        const answers = await connection.execute(`SELECT * FROM Answer WHERE question_id IN (${questionIdsString})`)
+        res.json({
+            questions: questions[0],
+            answers: answers[0]
+        });
     } else {
         try {
             const data = await connection.execute("SELECT * FROM Question");
