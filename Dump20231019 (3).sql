@@ -31,7 +31,7 @@ CREATE TABLE `Answer` (
   PRIMARY KEY (`answer_id`),
   KEY `fk_Answer_Question_idx` (`question_id`),
   CONSTRAINT `fk_Answer_Question` FOREIGN KEY (`question_id`) REFERENCES `Question` (`question_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `Answer` (
 
 LOCK TABLES `Answer` WRITE;
 /*!40000 ALTER TABLE `Answer` DISABLE KEYS */;
-INSERT INTO `Answer` VALUES (1,1,0,'1','2023-10-19'),(2,1,1,'5','2023-10-19'),(3,1,0,'6','2023-10-19'),(4,1,0,'7','2023-10-19'),(5,2,0,'4','2023-10-19'),(6,2,0,'5','2023-10-19'),(7,2,0,'6','2023-10-19'),(8,2,1,'7','2023-10-19'),(15,3,1,'2829','2023-10-19'),(16,3,0,'2819','2023-10-19'),(17,3,0,'2839','2023-10-19'),(18,3,0,'2809','2023-10-19'),(19,4,0,'Ngô Bộ Lĩnh','2023-10-19'),(20,4,1,'Ngô Thì Nhậm','2023-10-19'),(21,4,0,'Ngô Thuỵ','2023-10-19'),(22,4,0,'Ngô Ánh','2023-10-19'),(23,5,0,'Lý Thường Kiệt','2023-10-19'),(24,5,0,'Lê Lợi','2023-10-19'),(25,5,1,'Mai Hắc Đế','2023-10-19'),(26,5,0,'Nguyễn Trãi','2023-10-19'),(27,6,1,' Hải Thượng Lãn Ông, Lê Hữu Trác','2023-10-19'),(28,6,0,' Lý Công Uẩn','2023-10-19'),(29,6,0,' Hoàng Diệu','2023-10-19'),(30,6,0,'Hoa Đà','2023-10-19');
+INSERT INTO `Answer` VALUES (1,1,0,'1','2023-10-19'),(2,1,1,'5','2023-10-19'),(3,1,0,'6','2023-10-19'),(4,1,0,'7','2023-10-19'),(5,2,0,'4','2023-10-19'),(6,2,0,'5','2023-10-19'),(7,2,0,'6','2023-10-19'),(8,2,1,'7','2023-10-19'),(15,3,1,'2829','2023-10-19'),(16,3,0,'2819','2023-10-19'),(17,3,0,'2839','2023-10-19'),(18,3,0,'2809','2023-10-19'),(19,4,0,'Ngô Bộ Lĩnh','2023-10-19'),(20,4,1,'Ngô Thì Nhậm','2023-10-19'),(21,4,0,'Ngô Thuỵ','2023-10-19'),(22,4,0,'Ngô Ánh','2023-10-19'),(23,5,0,'Lý Thường Kiệt','2023-10-19'),(24,5,0,'Lê Lợi','2023-10-19'),(25,5,1,'Mai Hắc Đế','2023-10-19'),(26,5,0,'Nguyễn Trãi','2023-10-19'),(27,6,1,' Hải Thượng Lãn Ông, Lê Hữu Trác','2023-10-19'),(28,6,0,' Lý Công Uẩn','2023-10-19'),(29,6,0,' Hoàng Diệu','2023-10-19'),(30,6,0,'Hoa Đà','2023-10-19'),(31,8,1,'479001600','2023-10-19'),(32,8,0,'478001600','2023-10-19'),(33,8,0,'479001800','2023-10-19'),(34,8,0,'489001600','2023-10-19'),(35,9,1,'Mị Châu','2023-10-19'),(36,9,0,'Trọng Thuỷ','2023-10-19'),(37,9,0,'Ba Đình','2023-10-19'),(38,9,0,'Cua Càng','2023-10-19'),(39,10,1,'Hồ Chí Minh','2023-10-19'),(40,10,0,'Nguyễn Du','2023-10-19'),(41,10,0,'Thu Hương','2023-10-19'),(42,10,0,'Xuân Thuỷ','2023-10-19');
 /*!40000 ALTER TABLE `Answer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +84,7 @@ CREATE TABLE `Question` (
   PRIMARY KEY (`question_id`),
   KEY `fk_Question_Category_idx` (`category_id`),
   CONSTRAINT `fk_Question_Category` FOREIGN KEY (`category_id`) REFERENCES `Category` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `Question` (
 
 LOCK TABLES `Question` WRITE;
 /*!40000 ALTER TABLE `Question` DISABLE KEYS */;
-INSERT INTO `Question` VALUES (1,1,'2023-10-19','2+3=?',0),(2,1,'2023-10-19','3+4=?',0),(3,1,'2023-10-19','23*123=?',1),(4,2,'2023-10-19',' Lê triều sử ký soạn thành, họ Ngô?',1),(5,2,'2023-10-19',' Vua nào mặt sắt đen sì ?',1),(6,2,'2023-10-19','Đông y lừng tiếng danh sư?',1);
+INSERT INTO `Question` VALUES (1,1,'2023-10-19','2+3=?',0),(2,1,'2023-10-19','3+4=?',0),(3,1,'2023-10-19','23*123=?',1),(4,2,'2023-10-19',' Lê triều sử ký soạn thành, họ Ngô?',1),(5,2,'2023-10-19',' Vua nào mặt sắt đen sì ?',1),(6,2,'2023-10-19','Đông y lừng tiếng danh sư?',1),(8,1,'2023-10-19','12!',2),(9,2,'2023-10-19',' Rắc lông ngỗng, thiếp nghe chàng hại cha',0),(10,2,'2023-10-19','Ai là chủ tịch nước Việt Nam Dân chủ Cộng hoà',2);
 /*!40000 ALTER TABLE `Question` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -106,4 +106,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-19 19:28:40
+-- Dump completed on 2023-10-19 19:52:47
