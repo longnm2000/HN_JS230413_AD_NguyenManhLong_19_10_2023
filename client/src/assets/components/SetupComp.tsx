@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 function SetupComp() {
-
+    localStorage.removeItem("setup");
     interface Category {
         category_id: string;
         name: string;
@@ -46,9 +46,9 @@ function SetupComp() {
         </Form.Select>
         <Form.Label htmlFor="">Difficulty</Form.Label>
         <Form.Select value={level} onChange={(e)=>setLevel(+e.target.value)}>
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="difficult">Difficult</option>
+          <option value="0">Easy</option>
+          <option value="1">Medium</option>
+          <option value="2">Difficult</option>
         </Form.Select>
         <Button  variant="warning" className="w-100 mt-3" onClick={handleCompleteSetup}>Start</Button>
       </div>
