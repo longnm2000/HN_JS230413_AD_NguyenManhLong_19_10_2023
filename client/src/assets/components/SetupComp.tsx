@@ -11,10 +11,10 @@ function SetupComp() {
       }
     const [quantity,setQuantity] = useState<number>(1);
     const [categories,setCategories]=useState<Category[]>([]);
-    const [category,setCategory]=useState<number>(0);
+    const [category,setCategory]=useState<number>(1);
     const [level,setLevel]=useState<number>(0);
 
-    const fetchData = async()=>{
+    const fetchData = async ()=>{
        const response = await axios.get("http://localhost:3000/api/v1/categories");
        setCategories(response.data);
     }
@@ -28,6 +28,9 @@ function SetupComp() {
         localStorage.setItem("setup",JSON.stringify({quantity,category,level}));
         navigate("/questions");
     }
+
+    console.log(categories);
+    
     
   return (
     <>

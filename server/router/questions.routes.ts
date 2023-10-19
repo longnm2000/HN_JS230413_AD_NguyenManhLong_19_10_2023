@@ -33,7 +33,7 @@ router.get("/", async (req: Request, res: Response) => {
     const category = req.query.category;
     const level = req.query.level;
     const limit = req.query.limit;
-    console.log(category, level, limit);
+    // console.log(category, level, limit);
 
     if (!!category && !!level && !!limit) {
         let levelId: number = 0;
@@ -48,7 +48,10 @@ router.get("/", async (req: Request, res: Response) => {
 
         const questions = await connection.execute("SELECT * FROM Question WHERE category_id=? AND level=? LIMIT ?", [category, levelId, limit]);
         const questionIds: number[] = (questions[0] as RowDataPacket[]).map(e => e.question_id);
+
         const questionIdsString = questionIds.join(",");
+        console.log(questions);
+
         const answers = await connection.execute(`SELECT * FROM Answer WHERE question_id IN (${questionIdsString})`)
         res.json({
             questions: questions[0],

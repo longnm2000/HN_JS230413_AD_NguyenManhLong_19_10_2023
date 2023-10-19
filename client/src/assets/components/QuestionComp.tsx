@@ -6,22 +6,26 @@ function QuestionComp() {
   interface Setup {
     quantity: number,
     category: number,
-    level: string
+    level: number
   }
   const setup: Setup = JSON.parse(localStorage.getItem("setup") || "{}");
   console.log(setup);
-
+  const levelName = setup.level===0?"easy":setup.level===1?"medium":"difficult";
+  console.log(levelName);
+  
   const [data, setData] = useState<object[]>([])
   const [correctAnswers, setCorrectAnswers] = useState<number>(0);
   const fetchData = async () => {
-    const response = await axios.get(`http://localhost:3000/api/v1/questions?category=${setup.category}&level=${setup.level}&limit=${setup.quantity}`);
+    const response = await axios.get(`http://localhost:3000/api/v1/questions?category=${setup.category}&level=${levelName}&limit=${setup.quantity}`);
     setData(response.data);
   }
 
-  console.log(data);
+ 
   useEffect(() => {
     fetchData()
-  }, [])
+  }, []);
+
+  console.log(data);
   return (
     <>
       <div className="bg-white p-4 rounded-2">
